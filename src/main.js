@@ -133,7 +133,7 @@ if (query.length !== 0) {
     }
     removeLoader(loader);
   }
-  formEl.reset();
+  searchForm.reset();
 });
 // ------------------------------------------------
 
