@@ -123,7 +123,10 @@ if (query.length !== 0) {
         
       } else {
         clearGallery();
-        ulEl.innerHTML = displayImages(data.hits);
+        const markup = displayImages(data.hits);
+        ulEl.innerHTML = markup; 
+                 
+        // ulEl.innerHTML = displayImages(data.hits);
         gallery.refresh();
         checkEndPages();
       }
@@ -136,9 +139,6 @@ if (query.length !== 0) {
   }
   searchForm.reset();
 });
-
-
-
 
 loadMoreBtnEl.addEventListener('click', async () => {
   try {

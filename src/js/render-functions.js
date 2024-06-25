@@ -4,17 +4,9 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import iziToast from 'izitoast';
 
-// let lightbox;
 
-// export function displayImages(images) {
-//   const markup = images.map(displayImages).join('\n');
-//   return markup;
-// }
-// const gallery = document.getElementById('gallery');
-// export function displayImage(image) {
-
-
-  const gallery = document.getElementById('gallery');     
+const gallery = document.getElementById('gallery'); 
+  
 export let markup = '';
 export async function displayImages(images) {
   let markup = images
@@ -34,7 +26,7 @@ export async function displayImages(images) {
         })
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
-
+  return (markup);
     
 }
 export function addLoader(loader) {
@@ -42,4 +34,18 @@ export function addLoader(loader) {
 }
 export function removeLoader(loader) {
   loader.classList.add('loader-hidden');
+}
+export function btnStatus(currentPage, maxPage) {
+  if (page >= maxPage) {
+    hideLoadMore();
+
+    if (maxPage) {
+      iziToast.info({
+        title: 'The end!',
+        message: "We're sorry, but you've reached the end of search results.",
+      });
+    }
+  } else {
+    showLoadMore();
+  }
 }
