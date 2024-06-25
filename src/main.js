@@ -81,9 +81,6 @@ function scrollElem() {
 
 
 
-
-
-
 searchForm.addEventListener('submit', async event => {
     event.preventDefault();
     
@@ -97,7 +94,10 @@ if (query.length !== 0) {
     addLoader(loader);
 
     try {
+      
       const data = await searchImages(query, pageNumber); 
+      // console.log(data);
+
       totalPages = Math.ceil(data.totalHits / perPage);
 
       if (data.hits.length === 0) {
@@ -120,14 +120,15 @@ if (query.length !== 0) {
         
         clearGallery();
 
-        // ------------- If the data.hits not empty
+        
       } else {
         clearGallery();
         ulEl.innerHTML = displayImages(data.hits);
         gallery.refresh();
         checkEndPages();
       }
-      // -----------------------------------------
+      
+
     } catch (err) {
       console.log(err);
     }
@@ -135,9 +136,9 @@ if (query.length !== 0) {
   }
   searchForm.reset();
 });
-// ------------------------------------------------
 
-// -------------------- Click button's actions
+
+
 
 loadMoreBtnEl.addEventListener('click', async () => {
   try {

@@ -2,12 +2,24 @@
 import SimpleLightbox from "simplelightbox";
 // Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
+import iziToast from 'izitoast';
 
-let lightbox;
+// let lightbox;
 
-export function displayImages(images) {
-    const gallery = document.getElementById('gallery');
-    gallery.innerHTML = images.map(image => `
+// export function displayImages(images) {
+//   const markup = images.map(displayImages).join('\n');
+//   return markup;
+// }
+// const gallery = document.getElementById('gallery');
+// export function displayImage(image) {
+
+
+  const gallery = document.getElementById('gallery');     
+export let markup = '';
+export async function displayImages(images) {
+  let markup = images
+    .map(image => {
+        return `
         <li class="gallery-item">
             <a href="${image.largeImageURL}" class="gallery-link">
                 <img src="${image.webformatURL}" alt="${image.tags}">
@@ -18,8 +30,10 @@ export function displayImages(images) {
                 <p><strong>Comments:</strong> ${image.comments}</p>
                 <p><strong>Downloads:</strong> ${image.downloads}</p>
             </div>
-        </li>
-    `).join('');
+        </li>`;
+        })
+    .join('');
+  gallery.insertAdjacentHTML('beforeend', markup);
 
     
 }
