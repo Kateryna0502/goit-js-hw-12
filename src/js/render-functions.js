@@ -8,7 +8,7 @@ import iziToast from 'izitoast';
 const gallery = document.getElementById('gallery'); 
   
 export let markup = '';
-export async function displayImages(images) {
+export function displayImages(images) {
   let markup = images
     .map(image => {
         return `
@@ -25,7 +25,7 @@ export async function displayImages(images) {
         </li>`;
         })
     .join('');
-  gallery.insertAdjacentHTML('beforeend', markup);
+  // gallery.insertAdjacentHTML('beforeend', markup);
   return (markup);
     
 }

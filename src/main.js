@@ -125,6 +125,7 @@ if (query.length !== 0) {
         clearGallery();
         const markup = displayImages(data.hits);
         ulEl.innerHTML = markup; 
+        // gallery.insertAdjacentHTML('beforeend', markup);
                  
         // ulEl.innerHTML = displayImages(data.hits);
         gallery.refresh();
@@ -146,6 +147,7 @@ loadMoreBtnEl.addEventListener('click', async () => {
     addLoader(loader);
 
     ulEl.insertAdjacentHTML('beforeend', displayImages(data.hits));
+    
     gallery.refresh();
     scrollElem();
     removeLoader(loader);
