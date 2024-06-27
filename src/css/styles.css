@@ -108,8 +108,7 @@ body {
 .gallery-item {
   box-shadow: 0 0px 2px 0px;
   width: 360px;
-  height: 200px;
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 .gallery-link {
@@ -134,32 +133,7 @@ body {
   transform: scale(1.03);
 }
 
-/*========================================*/
-/* .property {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 4px;
-}
 
-.property__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.property__name {
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 1.33;
-}
-
-.item-prop__quantity {
-  font-size: 12px;
-  line-height: 2;
-} */
-
-
-/* ----------------------------------- */
 
 .loader {
   position: fixed;

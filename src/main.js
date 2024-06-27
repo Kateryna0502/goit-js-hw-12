@@ -125,9 +125,7 @@ if (query.length !== 0) {
         clearGallery();
         const markup = displayImages(data.hits);
         ulEl.innerHTML = markup; 
-        // gallery.insertAdjacentHTML('beforeend', markup);
-                 
-        // ulEl.innerHTML = displayImages(data.hits);
+        
         gallery.refresh();
         checkEndPages();
       }
@@ -163,36 +161,3 @@ loadMoreBtnEl.addEventListener('click', async () => {
 
 
 
-
-//     if (query === '') {
-//         iziToast.error({
-//             title: 'Error',
-//             message: 'Search query cannot be empty!'
-//         });
-//         return;
-//     }
-// loader.style.display = 'block';
-//     searchImages(query).then((data) => {
-//     if (data.hits.length === 0) {
-//         iziToast.error({
-//             title: 'Sorry',
-//             message: 'There are no images matching your search query. Please try again!'
-//         });
-//     } else {
-//         displayImages(data.hits);
-//         lightbox.refresh();
-//         }    
-//     })
-               
-//         .catch((error) => {
-//     iziToast.error({
-//         title: 'Error',
-//         message: 'Failed to fetch images. Please try again later.'
-//     })
-// }).finally(() => {
-//     loader.style.display = 'none';
-//     searchForm.reset();
-// })
-    
-     
-// })
