@@ -1,3 +1,7 @@
+// Описаний у документації
+import SimpleLightbox from "simplelightbox";
+// Додатковий імпорт стилів
+import "simplelightbox/dist/simple-lightbox.min.css";
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { searchImages } from './js/pixabay-api';
@@ -12,10 +16,7 @@ const ulEl = document.querySelector('.gallery');
 const loadMoreBtnEl = document.querySelector('.load-more__button');
 
 
-// Описаний у документації
-import SimpleLightbox from "simplelightbox";
-// Додатковий імпорт стилів
-import "simplelightbox/dist/simple-lightbox.min.css";
+
 
 let lightbox = new SimpleLightbox('.gallery a', {
             captionsData: 'alt',
@@ -84,11 +85,20 @@ function scrollElem() {
 searchForm.addEventListener('submit', async event => {
     event.preventDefault();
     
-    query = searchInput.value.trim();
+  query = searchInput.value.trim();
+  if (query === '') {
+        iziToast.error({
+            title: 'Error',
+            message: 'Search query cannot be empty!'
+        });
+        return;
+    }
 
     resetPageNumber();
 
-    hideLoadMoreBtn();
+  hideLoadMoreBtn();
+  
+  
     
 if (query.length !== 0) {
     addLoader(loader);
@@ -99,6 +109,7 @@ if (query.length !== 0) {
       // console.log(data);
 
       totalPages = Math.ceil(data.totalHits / perPage);
+      
 
       if (data.hits.length === 0) {
         
@@ -140,8 +151,10 @@ if (query.length !== 0) {
 });
 
 loadMoreBtnEl.addEventListener('click', async () => {
+  increasePage();
   try {
     const data = await searchImages(query, pageNumber);
+    
     addLoader(loader);
 
     ulEl.insertAdjacentHTML('beforeend', displayImages(data.hits));
@@ -160,4 +173,24 @@ loadMoreBtnEl.addEventListener('click', async () => {
 
 
 
+// if (data.hits.length !== 0) {
+//       imagesTemplate(data.hits);
+//       lightbox.refresh();
+//       hideLoader();
+//     }
+//     checkEndPages(currentPage, maxPage);
+//     skipOldElement();
+//   } catch (error) {
+//     refs.gallery.innerHTML = ' ';
 
+//     iziToast.error({
+//       title: 'Error',
+//       message: `${error}`,
+//       layout: 2,
+//       displayMode: 'once',
+//       backgroundColor: '#ef4040',
+//       progressBarColor: '#B51B1B',
+//       position: 'topRight',
+//     });
+//   }
+// });
