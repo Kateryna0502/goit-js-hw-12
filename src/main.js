@@ -15,9 +15,6 @@ const loader = document.getElementById('loader');
 const ulEl = document.querySelector('.gallery');
 const loadMoreBtnEl = document.querySelector('.load-more__button');
 
-
-
-
 let lightbox = new SimpleLightbox('.gallery a', {
             captionsData: 'alt',
             captionDelay: 250
@@ -62,7 +59,6 @@ function checkEndPages() {
       messageColor: '#ffffff',
 
       backgroundColor: '#b51b1b',
-      iconUrl: iconClose,
       position: 'topRight',
       theme: 'dark',
     });
@@ -80,13 +76,11 @@ function scrollElem() {
   });
 }
 
-
-
 searchForm.addEventListener('submit', async event => {
     event.preventDefault();
     
   query = searchInput.value.trim();
-  if (query === '') {
+  if (query === '' || query === !query) {
         iziToast.error({
             title: 'Error',
             message: 'Search query cannot be empty!'
@@ -173,24 +167,3 @@ loadMoreBtnEl.addEventListener('click', async () => {
 
 
 
-// if (data.hits.length !== 0) {
-//       imagesTemplate(data.hits);
-//       lightbox.refresh();
-//       hideLoader();
-//     }
-//     checkEndPages(currentPage, maxPage);
-//     skipOldElement();
-//   } catch (error) {
-//     refs.gallery.innerHTML = ' ';
-
-//     iziToast.error({
-//       title: 'Error',
-//       message: `${error}`,
-//       layout: 2,
-//       displayMode: 'once',
-//       backgroundColor: '#ef4040',
-//       progressBarColor: '#B51B1B',
-//       position: 'topRight',
-//     });
-//   }
-// });
