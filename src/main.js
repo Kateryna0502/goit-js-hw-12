@@ -25,7 +25,7 @@ export let pageNumber = 1;
 
 
 let query = '';
-let gallery = new SimpleLightbox('.gallery a');
+// let gallery = new SimpleLightbox('.gallery a');
 let totalPages;
 
 function clearGallery() {
@@ -131,7 +131,7 @@ if (query.length !== 0) {
         const markup = displayImages(data.hits);
         ulEl.innerHTML = markup; 
         
-        gallery.refresh();
+        lightbox.refresh();
         checkEndPages();
       }
       
@@ -153,7 +153,7 @@ loadMoreBtnEl.addEventListener('click', async () => {
 
     ulEl.insertAdjacentHTML('beforeend', displayImages(data.hits));
     
-    gallery.refresh();
+    lightbox.refresh();
     scrollElem();
     removeLoader(loader);
     increasePage();
