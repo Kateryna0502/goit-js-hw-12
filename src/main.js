@@ -20,8 +20,8 @@ let lightbox = new SimpleLightbox('.gallery a', {
             captionDelay: 250
 });
         
-export const perPage = 15;
-export let pageNumber = 1;
+const perPage = 15;
+let pageNumber = 1;
 
 
 let query = '';

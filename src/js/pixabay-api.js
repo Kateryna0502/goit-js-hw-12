@@ -1,7 +1,9 @@
 
 import axios from 'axios';
-import { perPage } from '../main';
+// import { perPage } from '../main';
 
+const perPage = 15;
+let pageNumber = 1;
 
 export async function searchImages(query, pageNumber) {
   axios.defaults.baseURL = 'https://pixabay.com';
