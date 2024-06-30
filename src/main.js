@@ -49,6 +49,7 @@ function resetPageNumber() {
 function checkEndPages() {
   if (pageNumber >= totalPages) {
     hideLoadMoreBtn();
+   
 
     return iziToast.error({
       class: 'izt-toast-message',
@@ -79,7 +80,9 @@ searchForm.addEventListener('submit', async event => {
     
   query = searchInput.value.trim();
   if (query === '' || query === !query) {
-        iziToast.error({
+    clearGallery();
+    hideLoadMoreBtn();
+    iziToast.error({
             title: 'Error',
             message: 'Search query cannot be empty!'
         });
