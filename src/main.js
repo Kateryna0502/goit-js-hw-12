@@ -7,7 +7,6 @@ import 'izitoast/dist/css/iziToast.min.css';
 import { searchImages } from './js/pixabay-api';
 import { displayImages, addLoader, removeLoader } from './js/render-functions';
 
-
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 
@@ -50,7 +49,6 @@ function checkEndPages() {
   if (pageNumber >= totalPages) {
     hideLoadMoreBtn();
    
-
     return iziToast.error({
       class: 'izt-toast-message',
       message: "We're sorry, but you've reached the end of search results.",
@@ -92,8 +90,7 @@ searchForm.addEventListener('submit', async event => {
     resetPageNumber();
 
   hideLoadMoreBtn();
-  
-  
+    
     
 if (query.length !== 0) {
     addLoader(loader);
