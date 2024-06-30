@@ -25,19 +25,18 @@ export let pageNumber = 1;
 
 
 let query = '';
-// let gallery = new SimpleLightbox('.gallery a');
 let totalPages;
 
 function clearGallery() {
-  ulEl.innerHTML = '';
+ulEl.innerHTML = '';
 }
 
 function increasePage() {
-  return (pageNumber = pageNumber + 1);
+return (pageNumber = pageNumber + 1);
 }
 
 function hideLoadMoreBtn() {
-  loadMoreBtnEl.classList.remove('active');
+loadMoreBtnEl.classList.remove('active');
 }
 function showLoadMoreBtn() {
   loadMoreBtnEl.classList.add('active');
@@ -57,7 +56,6 @@ function checkEndPages() {
       messageSize: '16',
       messageLineHeight: '24',
       messageColor: '#ffffff',
-
       backgroundColor: '#b51b1b',
       position: 'topRight',
       theme: 'dark',
@@ -106,7 +104,7 @@ if (query.length !== 0) {
       
 
       if (data.hits.length === 0) {
-        
+        clearGallery();
         iziToast.show({
           class: 'izt-toast-message',
 
@@ -117,7 +115,6 @@ if (query.length !== 0) {
           messageColor: '#ffffff',
 
           backgroundColor: '#b51b1b',
-          iconUrl: iconClose,
           position: 'topRight',
           theme: 'dark',
         });
@@ -156,7 +153,8 @@ loadMoreBtnEl.addEventListener('click', async () => {
     lightbox.refresh();
     scrollElem();
     removeLoader(loader);
-    increasePage();
+    // increasePage();
+    resetPageNumber;
 
     checkEndPages(totalPages);
   } catch (err) {
